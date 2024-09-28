@@ -31,7 +31,7 @@ As a valet guest,
 ## Scrum Roles
 
 **Scrum Master/Product Owner:** Chase Staggs  
-**UI:**Drew Miluk, Dilpreet Supra  
+**UI:** Drew Miluk, Dilpreet Supra  
 **Business Logic and Persistence:**  Chase Staggs, Al Gassama, Chen Yutong  
 
 ## GitHub Link
