@@ -31,10 +31,10 @@ As a valet guest,
 ## Scrum Roles
 
 **Scrum Master/Product Owner:** Chase Staggs  
-**UI:**  
-**Business Logic and Persistence:**  Chase Staggs  
-**Testing:**
+**UI:**Drew Miluk, Dilpreet Supra  
+**Business Logic and Persistence:**  Chase Staggs, Al Gassama, Chen Yutong  
 
 ## GitHub Link
 [Valet Parking Tracker](https://github.com/whsiq/ValetParkingTracker)  
 ## Group Standup
+Sunday 11 am
