@@ -33,6 +33,7 @@ As a valet guest,
 **Scrum Master/Product Owner:** Chase Staggs  
 **UI:**  
 **Business Logic and Persistence:**  Chase Staggs
+**Testing:**
 
 ## GitHub Link
 [Valet Parking Tracker](https://github.com/whsiq/ValetParkingTracker)  
