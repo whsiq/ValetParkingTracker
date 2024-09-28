@@ -69,6 +69,8 @@ Users can interact with Valet Parking Tracker using RESTful service endpoints, t
 {  
 "id": "string",  
 "parkingSpot": "string",
+"firstName": "string",
+"lastName": "string,
 "vehicleMake": "string",  
 "vehicleModel": "string",  
 "vehicleColor": "string",  
