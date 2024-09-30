@@ -84,7 +84,12 @@ Users can interact with Valet Parking Tracker using RESTful service endpoints, t
 **UI:** Drew Miluk, Dilpreet Supra  
 **Business Logic and Persistence:**  Chase Staggs, Al Gassama, Yutong Chen  
 
-## 🔗 GitHub Link
+## 🔗 GitHub Links
+
 [Valet Parking Tracker](https://github.com/whsiq/ValetParkingTracker)  
+[Milestones](https://github.com/whsiq/ValetParkingTracker/milestones)  
+[Projects - Scrum boards here](https://github.com/whsiq/ValetParkingTracker/projects?query=is%3Aopen)  
+
 ## 📅 Group Standup
+
 [Sunday 11 AM Meeting](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWM1ZGNjMjItNzMxMy00ODhjLTkzMTYtMmNmMWRlZmQ2M2Y4%40thread.v2/0?context=%7b%22Tid%22%3a%22f5222e6c-5fc6-48eb-8f03-73db18203b63%22%2c%22Oid%22%3a%221ebcc31f-9695-44be-8146-6f4a36582b82%22%7d)
