@@ -61,8 +61,9 @@ Users can interact with Valet Parking Tracker using RESTful service endpoints, t
 **When**: The valet selects "Pull vehicle"  
 **Then**: The vehicle is removed from the inventory
 
-## 📊 Class Diagram
 
+## 📊 Class Diagram
+![Class Diagram Valet Multiple Interfaces](https://github.com/user-attachments/assets/e219a724-e927-452e-9d7d-deb28c1f4509)
 ## 🧾 JSON Schema
 
 ```
