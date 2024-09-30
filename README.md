@@ -7,7 +7,7 @@ The valet manager can generate reports showing detailed info of every vehicle in
 Users can interact with Valet Parking Tracker using RESTful service endpoints, through a UI, or both.
 
 ## 🎨 Storyboard (screen mockups)
-
+![ValetTrackerScreenMockups](https://github.com/user-attachments/assets/e35c5264-a649-43ff-a08b-16d9d8e4c7d2)
 ## ⚙️ Functional Requirements
 
 1. As a valet attendant, I want to inventory the vehicles parked in my garage so I can keep track of what vehicles are there.
