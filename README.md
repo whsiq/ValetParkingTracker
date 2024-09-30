@@ -2,7 +2,7 @@
 
 ## 📝 Introduction
 
-Valet Parking Tracker is an application used by valet managers and valet attendants to enable the tracking of vehicles parked in a valet garage. Valet attendants can check in a vehicle any time with information such as ticket number, parking spot, vehicle make, model, color, and notes. 
+Valet Parking Tracker is an application used by valet managers and valet attendants to enable the tracking of vehicles parked in a valet garage. Valet attendants can check in a vehicle any time with information such as ticket number, parking spot, vehicle make, model, color, and notes. Valet guests can also remotely request their vehicle through connecting to the website and providing their ticket number.
 The valet manager can generate reports showing detailed info of every vehicle in their garage at any given time.  
 Users can interact with Valet Parking Tracker using RESTful service endpoints, through a UI, or both.
 
