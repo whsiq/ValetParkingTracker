@@ -31,6 +31,7 @@ class ValetParkingTrackerApplicationTests {
     @Test
     void fetchVehicleByID_returnsVolkswagenForID25() throws Exception {
         givenVehicleDataIsAvailable();
+        whenVehicle25AddedIsVolkswagen();
         whenSearchVehicleWithID25();
         thenReturnOneVolkswagenVehicleForID25();
 
@@ -41,13 +42,20 @@ class ValetParkingTrackerApplicationTests {
         vehicleService = new VehicleServiceStub(vehicleDAO);
     }
 
+    private void whenVehicle25AddedIsVolkswagen() {
+        Vehicle volkswagen = new Vehicle();
+        volkswagen.setId("25");
+        volkswagen.setMake("Volkswagen");
+        Mockito.when(vehicleDAO.fetch(25)).thenReturn(volkswagen);
+    }
+
     private void whenSearchVehicleWithID25() {
         vehicle = vehicleService.fetchById(25);
     }
 
     private void thenReturnOneVolkswagenVehicleForID25() {
-        String description = vehicle.getMake();
-        assertEquals("Volkswagen", description);
+        String make = vehicle.getMake();
+        assertEquals("Volkswagen", make);
     }
 
     @Test

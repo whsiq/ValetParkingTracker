@@ -24,10 +24,13 @@ public class VehicleServiceStub implements IVehicleService {
 
     @Override
     public Vehicle fetchById(int id) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setMake("Volkswagen");
-        vehicle.setId(id);
-        return vehicle;
+        Vehicle foundVehicle = vehicleDAO.fetch(id);
+        return foundVehicle;
+    }
+
+    @Override
+    public void delete(int id) throws Exception {
+        vehicleDAO.delete(id);
     }
 
     @Override

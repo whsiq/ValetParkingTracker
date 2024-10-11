@@ -12,6 +12,8 @@ public interface IVehicleService {
      */
     Vehicle fetchById(int id);
 
+    void delete(int id) throws Exception;
+
     Vehicle save(Vehicle vehicle) throws Exception;
 
     List<Vehicle> fetchAll();

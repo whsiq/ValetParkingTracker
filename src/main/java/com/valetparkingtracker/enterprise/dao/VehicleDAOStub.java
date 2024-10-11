@@ -4,21 +4,35 @@ import com.valetparkingtracker.enterprise.dto.Vehicle;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class VehicleDAOStub implements IVehicleDAO {
 
-    List<Vehicle> allVehicles = new ArrayList<Vehicle>();
+    Map<Integer, Vehicle> allVehicles = new HashMap<>();
 
     @Override
     public Vehicle save(Vehicle vehicle) throws Exception {
-        allVehicles.add(vehicle);
+        Integer vehicleID = Integer.parseInt(vehicle.getId());
+        allVehicles.put(vehicleID, vehicle);
         return vehicle;
     }
 
     @Override
     public List<Vehicle> fetchAll() {
-        return allVehicles;
+        List<Vehicle> returnVehicles = new ArrayList(allVehicles.values());
+        return returnVehicles;
+    }
+
+    @Override
+    public Vehicle fetch(int id) {
+        return allVehicles.get(id);
+    }
+
+    @Override
+    public void delete(int id) {
+        allVehicles.remove(id);
     }
 }

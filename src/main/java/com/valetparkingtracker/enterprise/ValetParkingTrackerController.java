@@ -3,7 +3,9 @@ package com.valetparkingtracker.enterprise;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,10 +58,17 @@ public class ValetParkingTrackerController {
      * @return
      */
     @GetMapping("/vehicle/{id}/")
-    public ResponseEntity fetchVehicleById(@PathVariable("id") String id) { return new ResponseEntity(HttpStatus.OK); }
+    public ResponseEntity fetchVehicleById(@PathVariable("id") String id) {
+        Vehicle foundVehicle = vehicleService.fetchById(Integer.parseInt(id));
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity(foundVehicle, headers, HttpStatus.OK);
+    }
 
     /**
      * Creates a new Vehicle object given provided data
+     * For some reason this works in debug mode when slowly moving through to the DAO,
+     * but when a post is sent in normal runtime I'm getting a thymeleaf TemplateInputException
      *
      * Returns one of the following status codes:
      * 201: successfully created a new vehicle
@@ -81,7 +90,13 @@ public class ValetParkingTrackerController {
 
     @DeleteMapping("/vehicle/{id}/")
     public ResponseEntity deleteVehicle(@PathVariable("id") String id) {
-        return new ResponseEntity(HttpStatus.OK);
+        try {
+            vehicleService.delete(Integer.parseInt(id));
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**

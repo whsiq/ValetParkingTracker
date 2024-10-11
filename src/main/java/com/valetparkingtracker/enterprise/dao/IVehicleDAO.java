@@ -8,4 +8,8 @@ public interface IVehicleDAO {
     Vehicle save(Vehicle vehicle) throws Exception;
 
     List<Vehicle> fetchAll();
+
+    Vehicle fetch(int id);
+
+    void delete(int id);
 }
