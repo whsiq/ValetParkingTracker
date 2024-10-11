@@ -9,4 +9,6 @@ public interface IVehicleService {
      * @return the matching vehicle, or null if no matches found.
      */
     Vehicle fetchById(int id);
+
+    Vehicle save(Vehicle vehicle) throws Exception;
 }
