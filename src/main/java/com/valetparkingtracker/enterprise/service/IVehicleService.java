@@ -2,6 +2,8 @@ package com.valetparkingtracker.enterprise.service;
 
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 
+import java.util.List;
+
 public interface IVehicleService {
     /**
      * Fetch a vehicle with a given ID
@@ -11,4 +13,6 @@ public interface IVehicleService {
     Vehicle fetchById(int id);
 
     Vehicle save(Vehicle vehicle) throws Exception;
+
+    List<Vehicle> fetchAll();
 }

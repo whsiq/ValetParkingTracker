@@ -2,11 +2,15 @@ package com.valetparkingtracker.enterprise.service;
 
 import com.valetparkingtracker.enterprise.dao.IVehicleDAO;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+
+@Service
 public class VehicleServiceStub implements IVehicleService {
 
+    @Autowired
     private IVehicleDAO vehicleDAO;
 
     public VehicleServiceStub() {
@@ -29,5 +33,10 @@ public class VehicleServiceStub implements IVehicleService {
     @Override
     public Vehicle save(Vehicle vehicle) throws Exception {
         return vehicleDAO.save(vehicle);
+    }
+
+    @Override
+    public List<Vehicle> fetchAll() {
+        return vehicleDAO.fetchAll();
     }
 }

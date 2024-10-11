@@ -1,11 +1,15 @@
 package com.valetparkingtracker.enterprise;
 
 import com.valetparkingtracker.enterprise.dto.Vehicle;
+import com.valetparkingtracker.enterprise.service.IVehicleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * The controller for Valet Parking Tracker REST endpoints and web UI
@@ -18,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ValetParkingTrackerController {
+
+    @Autowired
+    IVehicleService vehicleService;
 
     /**
      * Handle the root (/) endpoint and return a start page.
@@ -36,17 +43,50 @@ public class ValetParkingTrackerController {
         return "start";
     }
 
-    /**
-     * Should eventually save a vehicle to the database and return to the start page
-     * @param vehicle the vehicle to be saved with the provided information
-     * @return
-     */
-    @RequestMapping("/saveVehicle")
-    public String saveVehicle(Vehicle vehicle) {
-        return "start";
+    @GetMapping("/vehicle")
+    @ResponseBody
+    public List<Vehicle> fetchAllVehicles() {
+        vehicleService.fetchAll();
+        return vehicleService.fetchAll();
     }
 
     /**
+     *
+     * @param id a unique identifier for this vehicle
+     * @return
+     */
+    @GetMapping("/vehicle/{id}/")
+    public ResponseEntity fetchVehicleById(@PathVariable("id") String id) { return new ResponseEntity(HttpStatus.OK); }
+
+    /**
+     * Creates a new Vehicle object given provided data
+     *
+     * Returns one of the following status codes:
+     * 201: successfully created a new vehicle
+     * 409: unable to create vehicle because it already exists
+     *
+     * @param vehicle a JSON representation of a vehicle object
+     * @return the newly created vehicle object
+     */
+    @PostMapping(value="/vehicle", consumes="application/json", produces="application/json")
+    public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
+        Vehicle newVehicle = null;
+        try {
+            newVehicle = vehicleService.save(vehicle);
+        } catch (Exception e) {
+            // TODO Add logging
+        }
+        return newVehicle;
+    }
+
+    @DeleteMapping("/vehicle/{id}/")
+    public ResponseEntity deleteVehicle(@PathVariable("id") String id) {
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    /**
+     * <p>UI Mapping</p>
+     *
      * Displays the form to add a new vehicle
      *
      * @return the newVehicle html page
@@ -56,20 +96,5 @@ public class ValetParkingTrackerController {
         Vehicle vehicle = new Vehicle();
         model.addAttribute(vehicle);
         return "newVehicle";
-    }
-
-    /**
-     * Creates a new Vehicle object given provided data
-     *
-     * Returns one of the following status codes:
-     * 201: successfully created a new specimen
-     * 409: unable to create specimen because it already exists
-     *
-     * @param vehicle a JSON representation of a vehicle object
-     * @return the newly created vehicle object
-     */
-    @PostMapping(value = "/createVehicle", consumes = "application/json", produces = "application/json")
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
-        return vehicle;
     }
 }
