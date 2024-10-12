@@ -4,7 +4,7 @@ import lombok.Data;
 
 public @Data
 class Vehicle {
-    private int id;
+    private String id;
     private String firstName;
     private String lastName;
     private String make;
