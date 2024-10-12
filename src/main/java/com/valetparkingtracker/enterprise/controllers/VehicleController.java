@@ -1,5 +1,6 @@
-package com.valetparkingtracker.enterprise;
+package com.valetparkingtracker.enterprise.controllers;
 
+import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,36 +15,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * The controller for Valet Parking Tracker REST endpoints and web UI
  * <p>
- *     This class handles the CRUD operations for Valet Parking Tracker vehicles through HTTP actions
- * </p>
- * <p>
- *     This class also serves HTML pages for UI interactions with vehicles
+ *     This class handles the CRUD operations for Vehicles through HTTP actions
  * </p>
  */
 @Controller
-public class ValetParkingTrackerController {
+public class VehicleController {
 
     @Autowired
     IVehicleService vehicleService;
-
-    /**
-     * Handle the root (/) endpoint and return a start page.
-     * @return
-     */
-    @RequestMapping("/")
-    public String index(Model model) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setFirstName("Chase");
-        vehicle.setLastName("Staggs");
-        vehicle.setMake("VW");
-        vehicle.setModel("Golf");
-        vehicle.setColor("Silver");
-        vehicle.setParkingSpot("4a");
-        model.addAttribute(vehicle);
-        return "start";
-    }
 
     @GetMapping("/vehicle")
     @ResponseBody
@@ -97,38 +77,5 @@ public class ValetParkingTrackerController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
-
-    @RequestMapping("/saveVehicle")
-    public String saveVehicle(Vehicle vehicle) {
-        try {
-            vehicleService.save(vehicle);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "start";
-        }
-        return "start";
-    }
-
-    /**
-     * <p>UI Mapping</p>
-     *
-     * Displays the form to add a new vehicle
-     *
-     * @return the newVehicle html page
-     */
-    @RequestMapping("/newVehicle")
-    public String addVehicle(Model model) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setId("0");
-        vehicle.setFirstName("Chase");
-        vehicle.setLastName("Staggs");
-        vehicle.setMake("VW");
-        vehicle.setModel("Golf");
-        vehicle.setColor("Silver");
-        vehicle.setParkingSpot("4a");
-        vehicle.setNotes("damaged");
-        model.addAttribute(vehicle);
-        return "newVehicle";
     }
 }

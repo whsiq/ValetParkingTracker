@@ -9,25 +9,18 @@
 </head>
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
-  Park a car, Pull a car
-  <p th:text="${vehicle}" />
 
   <form action="#" th:action="@{/saveVehicle}" th:object="${vehicle}" method="GET">
 
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="id">Ticket Number</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:field="*{id}">
-    </div>
+<!--    <div class="input-group input-group-sm mb-3">-->
+<!--      <span class="input-group-text" id="firstName">First Name</span>-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}">-->
+<!--    </div>-->
 
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="firstName">First Name</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:field="*{firstName}">
-    </div>
-
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="lastName">Last Name</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{lastName}">
-    </div>
+<!--    <div class="input-group input-group-sm mb-3">-->
+<!--      <span class="input-group-text" id="lastName">Last Name</span>-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}">-->
+<!--    </div>-->
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="make">Make</span>
@@ -44,10 +37,10 @@
       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{color}">
     </div>
 
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="parkingSpot">Parking Spot</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{parkingSpot}">
-    </div>
+<!--    <div class="input-group input-group-sm mb-3">-->
+<!--      <span class="input-group-text" id="parkingSpot">Parking Spot</span>-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{parkingSpot}">-->
+<!--    </div>-->
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="notes">Notes</span>
