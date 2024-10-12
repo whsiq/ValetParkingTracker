@@ -63,19 +63,27 @@ Users can interact with Valet Parking Tracker using RESTful service endpoints, t
 
 
 ## 📊 Class Diagram
-![Class Diagram Valet Multiple Interfaces](https://github.com/user-attachments/assets/e219a724-e927-452e-9d7d-deb28c1f4509)
+![Class Diagram Valet Multiple Interfaces](assets/ValetParkingTracker.png)
 ## 🧾 JSON Schema
 
 ```
-{  
-"id": "string",  
-"parkingSpot": "string",
-"firstName": "string",
-"lastName": "string,
-"vehicleMake": "string",  
-"vehicleModel": "string",  
-"vehicleColor": "string",  
-"notes": "string",  
+{
+    {
+        "vehicleId": "string",
+        "make": "string",
+        "model": "string",
+        "color": "string",
+        "notes": "string"
+    },
+    {
+        "customerId": "string",
+        "firstName": "string",
+        "lastName": "string",
+    },
+    {
+        "ticketId": "string",
+        "parkingSpot": "string"
+    }
 }
 ```
 
