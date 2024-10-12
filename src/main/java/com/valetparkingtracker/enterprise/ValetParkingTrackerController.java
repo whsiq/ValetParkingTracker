@@ -1,5 +1,6 @@
 package com.valetparkingtracker.enterprise;
 
+import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +36,12 @@ public class ValetParkingTrackerController {
     @RequestMapping("/")
     public String index(Model model) {
         Vehicle vehicle = new Vehicle();
-        vehicle.setFirstName("Chase");
-        vehicle.setLastName("Staggs");
+        vehicle.setVehicleId("25");
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
-        vehicle.setParkingSpot("4a");
+        vehicle.setNotes("damaged");
+        vehicle.setTicketId("27");
         model.addAttribute(vehicle);
         return "start";
     }
@@ -113,22 +114,19 @@ public class ValetParkingTrackerController {
     /**
      * <p>UI Mapping</p>
      *
-     * Displays the form to add a new vehicle
+     * Displays the form to check in a guest
+     * Should create a new vehicle, customer, and ticket using provided info
      *
      * @return the newVehicle html page
      */
-    @RequestMapping("/newVehicle")
-    public String addVehicle(Model model) {
+    @RequestMapping("/checkIn")
+    public String checkIn(Model model) {
         Vehicle vehicle = new Vehicle();
-        vehicle.setId("0");
-        vehicle.setFirstName("Chase");
-        vehicle.setLastName("Staggs");
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
-        vehicle.setParkingSpot("4a");
         vehicle.setNotes("damaged");
         model.addAttribute(vehicle);
-        return "newVehicle";
+        return "checkIn";
     }
 }
