@@ -99,6 +99,17 @@ public class ValetParkingTrackerController {
 
     }
 
+    @RequestMapping("/saveVehicle")
+    public String saveVehicle(Vehicle vehicle) {
+        try {
+            vehicleService.save(vehicle);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "start";
+        }
+        return "start";
+    }
+
     /**
      * <p>UI Mapping</p>
      *
@@ -109,6 +120,14 @@ public class ValetParkingTrackerController {
     @RequestMapping("/newVehicle")
     public String addVehicle(Model model) {
         Vehicle vehicle = new Vehicle();
+        vehicle.setId("0");
+        vehicle.setFirstName("Chase");
+        vehicle.setLastName("Staggs");
+        vehicle.setMake("VW");
+        vehicle.setModel("Golf");
+        vehicle.setColor("Silver");
+        vehicle.setParkingSpot("4a");
+        vehicle.setNotes("damaged");
         model.addAttribute(vehicle);
         return "newVehicle";
     }
