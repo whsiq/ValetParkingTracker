@@ -10,6 +10,8 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
+<!--   The idea with this form is to use th:action /saveTicket and th:object ticket instead of vehicle. -->
+<!--  Since Ticket acts as a parent object to Customer and Vehicle, we can create a ticket with a new customer and new vehicle to submit a form creating all 3 -->
   <form action="#" th:action="@{/saveVehicle}" th:object="${vehicle}" method="GET">
 
 <!--    <div class="input-group input-group-sm mb-3">-->

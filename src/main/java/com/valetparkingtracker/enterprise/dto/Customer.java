@@ -7,5 +7,4 @@ public class Customer {
     private String customerId;
     private String firstName;
     private String lastName;
-    private String ticketId;
 }

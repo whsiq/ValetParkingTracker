@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Ticket {
     private int ticketId;
-    private int customerId;
-    private int vehicleId;
+    private Customer customer;
+    private Vehicle vehicle;
     private int parkingSpot;
 }
