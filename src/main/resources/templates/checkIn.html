@@ -14,37 +14,37 @@
 
 <!--    <div class="input-group input-group-sm mb-3">-->
 <!--      <span class="input-group-text" id="firstName">First Name</span>-->
-<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}">-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">-->
 <!--    </div>-->
 
 <!--    <div class="input-group input-group-sm mb-3">-->
 <!--      <span class="input-group-text" id="lastName">Last Name</span>-->
-<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}">-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">-->
 <!--    </div>-->
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="make">Make</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="make" th:field="*{make}">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="make" th:field="*{make}" th:required="required">
     </div>
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="model">Model</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{model}">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{model}" th:required="required">
     </div>
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="color">Color</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{color}">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{color}" th:required="required">
     </div>
 
 <!--    <div class="input-group input-group-sm mb-3">-->
 <!--      <span class="input-group-text" id="parkingSpot">Parking Spot</span>-->
-<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{parkingSpot}">-->
+<!--      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{parkingSpot}" th:required="required">-->
 <!--    </div>-->
 
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="notes">Notes</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{notes}">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{notes}" th:required="required">
     </div>
 
     <button name="submit" type="submit" value="0" class="btn btn-primary">Submit</button>
