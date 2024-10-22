@@ -2,8 +2,8 @@ package com.valetparkingtracker.enterprise.dto;
 
 import lombok.Data;
 
-@Data
-public class Ticket {
+public @Data
+class Ticket {
     private int ticketId;
     private Customer customer;
     private Vehicle vehicle;
