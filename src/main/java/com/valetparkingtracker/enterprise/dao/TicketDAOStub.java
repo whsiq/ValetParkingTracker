@@ -16,7 +16,7 @@ public class TicketDAOStub implements ITicketDAO {
 
     @Override
     public Ticket save(Ticket ticket) throws Exception {
-        Integer ticketID = Integer.parseInt(ticket.getTicketId());
+        Integer ticketID = ticket.getTicketId();
         allTickets.put(ticketID, ticket);
         return ticket;
     }

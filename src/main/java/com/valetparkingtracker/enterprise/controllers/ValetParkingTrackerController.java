@@ -34,7 +34,7 @@ public class ValetParkingTrackerController {
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
         vehicle.setNotes("damaged");
-        vehicle.setTicketId("27");
+//        vehicle.setTicketId("27");
         model.addAttribute(vehicle);
         return "start";
     }

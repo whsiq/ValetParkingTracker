@@ -57,7 +57,7 @@ public class TicketController {
      */
     @PostMapping(value = "/ticket", consumes = "application/json", produces = "application/json")
     public Ticket createTicket(@RequestBody Ticket ticket) {
-        Ticket ticket = null;
+        Ticket newTicket = null;
         try {
             newTicket = ticketService.save(ticket);
         } catch (Exception e) {
