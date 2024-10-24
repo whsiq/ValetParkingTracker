@@ -10,22 +10,20 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
-<!--   The idea with this form is to use th:action /saveTicket and th:object ticket instead of vehicle. -->
-<!--  Since Ticket acts as a parent object to Customer and Vehicle, we can create a ticket with a new customer and new vehicle to submit a form creating all 3 -->
-  <form action="#" th:action="@{/saveVehicle}" th:object="${ticket}" method="GET">
+<form action="#" th:action="@{/saveVehicle}" th:object="${ticket}" method="GET">
 
     <h2 class="mb-4 text-center">Valet Parking Check-In</h2>
 
     <div class="container mt-1">
 
-<!--      <div class="input-group input-group-sm mb-3">-->
-<!--        <span class="input-group-text" id="firstName">First Name</span>-->
-<!--        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">-->
-<!--      </div>-->
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="firstName">First Name</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">
+      </div>
 
-<!--      <div class="input-group input-group-sm mb-3">-->
-<!--        <span class="input-group-text" id="lastName">Last Name</span>-->
-<!--        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">-->
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="lastName">Last Name</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">

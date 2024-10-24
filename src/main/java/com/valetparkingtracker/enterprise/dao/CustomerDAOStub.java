@@ -15,7 +15,7 @@ public class CustomerDAOStub implements ICustomerDAO {
 
     @Override
     public Customer save(Customer customer) throws Exception {
-        Integer customerID = Integer.parseInt(customer.getCustomerId());
+        Integer customerID = customer.getCustomerId();
         allCustomers.put(customerID, customer);
         return customer;
     }

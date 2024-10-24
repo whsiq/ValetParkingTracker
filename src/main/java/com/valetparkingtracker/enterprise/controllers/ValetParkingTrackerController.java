@@ -32,13 +32,19 @@ public class ValetParkingTrackerController {
     @RequestMapping("/")
     public String index(Model model) {
         Ticket ticket = new Ticket();
-//        Customer customer = new Customer();
+        Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
+
+        customer.setFirstName("Chase");
+        customer.setLastName("Staggs");
+        ticket.setCustomer(customer);
+
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
         vehicle.setNotes("damaged");
         ticket.setVehicle(vehicle);
+
         ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
         return "start";
@@ -66,13 +72,19 @@ public class ValetParkingTrackerController {
     @RequestMapping("/checkIn")
     public String checkIn(Model model) {
         Ticket ticket = new Ticket();
-//        Customer customer = new Customer();
+        Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
+
+        customer.setFirstName("Chase");
+        customer.setLastName("Staggs");
+        ticket.setCustomer(customer);
+
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
         vehicle.setNotes("damaged");
         ticket.setVehicle(vehicle);
+
         ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
         return "checkIn";
