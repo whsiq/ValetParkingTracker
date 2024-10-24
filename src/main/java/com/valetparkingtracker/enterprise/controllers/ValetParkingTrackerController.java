@@ -1,6 +1,9 @@
 package com.valetparkingtracker.enterprise.controllers;
 
+import com.valetparkingtracker.enterprise.dto.Customer;
+import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
+import com.valetparkingtracker.enterprise.service.ITicketService;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class ValetParkingTrackerController {
 
     @Autowired
-    IVehicleService vehicleService;
+    ITicketService ticketService;
 
     /**
      * Handle the root (/) endpoint and return a start page.
@@ -28,21 +31,23 @@ public class ValetParkingTrackerController {
      */
     @RequestMapping("/")
     public String index(Model model) {
+        Ticket ticket = new Ticket();
+//        Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleId("25");
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
         vehicle.setNotes("damaged");
-//        vehicle.setTicketId("27");
-        model.addAttribute(vehicle);
+        ticket.setVehicle(vehicle);
+        ticket.setParkingSpot("4a");
+        model.addAttribute(ticket);
         return "start";
     }
 
     @RequestMapping("/saveVehicle")
-    public String saveVehicle(Vehicle vehicle) {
+    public String saveVehicle(Ticket ticket) {
         try {
-            vehicleService.save(vehicle);
+            ticketService.save(ticket);
         } catch (Exception e) {
             e.printStackTrace();
             return "start";
@@ -60,12 +65,16 @@ public class ValetParkingTrackerController {
      */
     @RequestMapping("/checkIn")
     public String checkIn(Model model) {
+        Ticket ticket = new Ticket();
+//        Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
         vehicle.setMake("VW");
         vehicle.setModel("Golf");
         vehicle.setColor("Silver");
         vehicle.setNotes("damaged");
-        model.addAttribute(vehicle);
+        ticket.setVehicle(vehicle);
+        ticket.setParkingSpot("4a");
+        model.addAttribute(ticket);
         return "checkIn";
     }
 }

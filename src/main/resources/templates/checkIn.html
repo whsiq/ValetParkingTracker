@@ -18,39 +18,39 @@
 
     <div class="container mt-1">
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="firstName">First Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">
-      </div>
+<!--      <div class="input-group input-group-sm mb-3">-->
+<!--        <span class="input-group-text" id="firstName">First Name</span>-->
+<!--        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">-->
+<!--      </div>-->
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="lastName">Last Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">
+<!--      <div class="input-group input-group-sm mb-3">-->
+<!--        <span class="input-group-text" id="lastName">Last Name</span>-->
+<!--        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">-->
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="make">Make</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="make" th:field="*{make}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="make" th:field="*{vehicle.make}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="model">Model</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{model}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{vehicle.model}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="color">Color</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="color" th:field="*{color}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="color" th:field="*{vehicle.color}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="parkingSpot">Parking Spot</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{vehicle.parkingSpot}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="notes" th:field="*{parkingSpot}">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="notes">Notes</span>
-        <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{notes}" th:required="required"></textarea>
+        <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="notes" th:field="*{vehicle.notes}"></textarea>
       </div>
 
       <button name="submit" type="submit" value="0" class="btn btn-primary">Submit</button>

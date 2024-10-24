@@ -9,5 +9,5 @@ public class Ticket {
     private int ticketId;
     private Customer customer;
     private Vehicle vehicle;
-    private int parkingSpot;
+    private String parkingSpot;
 }
