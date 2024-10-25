@@ -10,9 +10,7 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
-<!--   The idea with this form is to use th:action /saveTicket and th:object ticket instead of vehicle. -->
-<!--  Since Ticket acts as a parent object to Customer and Vehicle, we can create a ticket with a new customer and new vehicle to submit a form creating all 3 -->
-  <form action="#" th:action="@{/saveVehicle}" th:object="${ticket}" method="GET">
+  <form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="GET">
 
     <h2 class="mb-4 text-center">Valet Parking Edit Tracker</h2>
 
@@ -20,37 +18,37 @@
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="firstName">First Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="firstName" th:value="*{customer.firstName}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.firstName" th:value="*{customer.firstName}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="lastName">Last Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="lastName" th:field="*{customer.lastName}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{customer.lastName}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="make">Make</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="make" th:field="*{make}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="model">Model</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="model" th:field="*{model}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.model}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="color">Color</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="color" th:field="*{color}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.color}" th:required="required">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="parkingSpot">Parking Spot</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{vehicle.parkingSpot}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{parkingSpot}">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="notes">Notes</span>
-        <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="parkingSpot" th:field="*{notes}" th:required="required"></textarea>
+        <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="notes" th:field="*{vehicle.notes}"></textarea>
       </div>
 
       <button name="submit" type="submit" value="0" class="btn btn-primary">Update</button>

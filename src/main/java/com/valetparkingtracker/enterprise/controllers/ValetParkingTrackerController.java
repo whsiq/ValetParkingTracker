@@ -50,8 +50,8 @@ public class ValetParkingTrackerController {
         return "start";
     }
 
-    @RequestMapping("/saveVehicle")
-    public String saveVehicle(Ticket ticket) {
+    @RequestMapping("/saveTicket")
+    public String saveTicket(Ticket ticket) {
         try {
             ticketService.save(ticket);
         } catch (Exception e) {
@@ -75,6 +75,35 @@ public class ValetParkingTrackerController {
         Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
 
+//        customer.setFirstName("Chase");
+//        customer.setLastName("Staggs");
+        ticket.setCustomer(customer);
+
+//        vehicle.setMake("VW");
+//        vehicle.setModel("Golf");
+//        vehicle.setColor("Silver");
+//        vehicle.setNotes("damaged");
+        ticket.setVehicle(vehicle);
+
+//        ticket.setParkingSpot("4a");
+        model.addAttribute(ticket);
+        return "checkIn";
+    }
+
+    /**
+     * <p>UI Mapping</p>
+     *
+     * Displays the form to check in a guest
+     * Should create a new vehicle, customer, and ticket using provided info
+     *
+     * @return the newVehicle html page
+     */
+    @RequestMapping("/edit")
+    public String edit(Model model) {
+        Ticket ticket = new Ticket();
+        Customer customer = new Customer();
+        Vehicle vehicle = new Vehicle();
+
         customer.setFirstName("Chase");
         customer.setLastName("Staggs");
         ticket.setCustomer(customer);
@@ -87,6 +116,6 @@ public class ValetParkingTrackerController {
 
         ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
-        return "checkIn";
+        return "edit";
     }
 }
