@@ -65,14 +65,14 @@ public class ValetParkingTrackerController {
     }
 
     @RequestMapping("/saveTicket")
-    public String saveTicket(Ticket ticket) {
+    public String saveTicket(Model model, Ticket ticket) {
         try {
             ticketService.save(ticket);
         } catch (Exception e) {
             e.printStackTrace();
-            return "start";
+            return index(model);
         }
-        return "start";
+        return index(model);
     }
 
     /**
@@ -89,17 +89,17 @@ public class ValetParkingTrackerController {
         Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
 
-//        customer.setFirstName("Chase");
-//        customer.setLastName("Staggs");
+        customer.setFirstName("Chase");
+        customer.setLastName("Staggs");
         ticket.setCustomer(customer);
 
-//        vehicle.setMake("VW");
-//        vehicle.setModel("Golf");
-//        vehicle.setColor("Silver");
-//        vehicle.setNotes("damaged");
+        vehicle.setMake("VW");
+        vehicle.setModel("Golf");
+        vehicle.setColor("Silver");
+        vehicle.setNotes("damaged");
         ticket.setVehicle(vehicle);
 
-//        ticket.setParkingSpot("4a");
+        ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
         return "checkIn";
     }
