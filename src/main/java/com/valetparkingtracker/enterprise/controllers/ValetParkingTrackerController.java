@@ -58,6 +58,9 @@ public class ValetParkingTrackerController {
         model.addAttribute("notes", vehicle.getNotes());
         model.addAttribute("parkingSpot", ticket.getParkingSpot());*/
 
+        List<Ticket> tickets = ticketService.fetchAll();
+        model.addAttribute("tickets", tickets);
+
         return "start";
     }
 

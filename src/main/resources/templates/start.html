@@ -34,15 +34,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td th:text="${ticketID}"></td>
-            <td th:text="${firstName}"></td>
-            <td th:text="${lastName}"></td>
-            <td th:text="${make}"></td>
-            <td th:text="${model}"></td>
-            <td th:text="${color}"></td>
-            <td th:text="${parkingSpot}"></td>
-            <td th:text="${notes}"></td>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.ticketId}"></td>
+            <td th:text="${ticket.customer.firstName}"></td>
+            <td th:text="${ticket.customer.lastName}"></td>
+            <td th:text="${ticket.vehicle.make}"></td>
+            <td th:text="${ticket.vehicle.model}"></td>
+            <td th:text="${ticket.vehicle.color}"></td>
+            <td th:text="${ticket.parkingSpot}"></td>
+            <td th:text="${ticket.vehicle.notes}"></td>
             <td>
                 <button name="pull" class="btn btn-primary pull-btn">Pull</button>
             </td>
