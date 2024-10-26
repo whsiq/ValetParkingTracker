@@ -6,6 +6,8 @@ import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.ITicketService;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,31 +35,6 @@ public class ValetParkingTrackerController {
      */
     @RequestMapping("/")
     public String index(Model model) {
-        /*Ticket ticket = new Ticket();
-        Customer customer = new Customer();
-        Vehicle vehicle = new Vehicle();
-
-        customer.setFirstName("Chase");
-        customer.setLastName("Staggs");
-        ticket.setCustomer(customer);
-
-        vehicle.setMake("VW");
-        vehicle.setModel("Golf");
-        vehicle.setColor("Silver");
-        vehicle.setNotes("damaged");
-        ticket.setVehicle(vehicle);
-
-        ticket.setParkingSpot("4a");
-        model.addAttribute(ticket);
-
-        model.addAttribute("firstName", customer.getFirstName());
-        model.addAttribute("lastName", customer.getLastName());
-        model.addAttribute("make", vehicle.getMake());
-        model.addAttribute("model", vehicle.getModel());
-        model.addAttribute("color", vehicle.getColor());
-        model.addAttribute("notes", vehicle.getNotes());
-        model.addAttribute("parkingSpot", ticket.getParkingSpot());*/
-
         List<Ticket> tickets = ticketService.fetchAll();
         model.addAttribute("tickets", tickets);
 
@@ -89,17 +66,8 @@ public class ValetParkingTrackerController {
         Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
 
-        customer.setFirstName("Chase");
-        customer.setLastName("Staggs");
         ticket.setCustomer(customer);
-
-        vehicle.setMake("VW");
-        vehicle.setModel("Golf");
-        vehicle.setColor("Silver");
-        vehicle.setNotes("damaged");
         ticket.setVehicle(vehicle);
-
-        ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
         return "checkIn";
     }
@@ -112,24 +80,21 @@ public class ValetParkingTrackerController {
      *
      * @return the newVehicle html page
      */
-    @RequestMapping("/edit")
-    public String edit(Model model) {
-        Ticket ticket = new Ticket();
-        Customer customer = new Customer();
-        Vehicle vehicle = new Vehicle();
-
-        customer.setFirstName("Chase");
-        customer.setLastName("Staggs");
-        ticket.setCustomer(customer);
-
-        vehicle.setMake("VW");
-        vehicle.setModel("Golf");
-        vehicle.setColor("Silver");
-        vehicle.setNotes("damaged");
-        ticket.setVehicle(vehicle);
-
-        ticket.setParkingSpot("4a");
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable("id") String id, Model model) {
+        Ticket ticket = ticketService.fetchById(Integer.parseInt(id));
         model.addAttribute(ticket);
         return "edit";
+    }
+
+    @RequestMapping("/pullVehicle/{id}")
+    public String pullVehicle(@PathVariable("id") String id, Model model) {
+        try {
+            ticketService.delete(Integer.parseInt(id));
+            return index(model);
+        } catch (Exception e) {
+            // TODO: ADD LOGGING
+            return index(model);
+        }
     }
 }

@@ -10,11 +10,17 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
-<form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="GET">
+<!--  this form can be changed to POST to put the query in the request body rather than the URL - more secure and looks better - GET is better for debugging -->
+<form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="POST">
 
     <h2 class="mb-4 text-center">Valet Parking Check-In</h2>
 
     <div class="container mt-1">
+
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="ticketId">Ticket ID</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="ticketId" th:value="*{ticketId}" th:required="required">
+        </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="firstName">First Name</span>
@@ -27,6 +33,7 @@
       </div>
 
       <div class="input-group input-group-sm mb-3">
+<!--        api integration idea - make and model autofill from outside source -->
         <span class="input-group-text" id="make">Make</span>
         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required">
       </div>
