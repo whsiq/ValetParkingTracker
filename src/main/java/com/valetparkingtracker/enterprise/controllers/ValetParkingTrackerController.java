@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * The controller for Valet Parking Tracker REST endpoints and web UI
  * <p>
@@ -31,7 +33,7 @@ public class ValetParkingTrackerController {
      */
     @RequestMapping("/")
     public String index(Model model) {
-        Ticket ticket = new Ticket();
+        /*Ticket ticket = new Ticket();
         Customer customer = new Customer();
         Vehicle vehicle = new Vehicle();
 
@@ -47,6 +49,15 @@ public class ValetParkingTrackerController {
 
         ticket.setParkingSpot("4a");
         model.addAttribute(ticket);
+
+        model.addAttribute("firstName", customer.getFirstName());
+        model.addAttribute("lastName", customer.getLastName());
+        model.addAttribute("make", vehicle.getMake());
+        model.addAttribute("model", vehicle.getModel());
+        model.addAttribute("color", vehicle.getColor());
+        model.addAttribute("notes", vehicle.getNotes());
+        model.addAttribute("parkingSpot", ticket.getParkingSpot());*/
+
         return "start";
     }
 
