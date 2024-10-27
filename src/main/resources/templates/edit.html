@@ -10,11 +10,16 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
-  <form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="GET">
+  <form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="PUT">
 
     <h2 class="mb-4 text-center">Valet Parking Edit Tracker</h2>
 
     <div class="container mt-1">
+
+      <div style="display: none">
+        <span class="input-group-text" id="ticketId">Ticket ID</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="ticketId" th:value="*{ticketId}">
+      </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="firstName">First Name</span>
