@@ -6,6 +6,10 @@ Valet Parking Tracker is an application used by valet managers and valet attenda
 The valet manager can generate reports showing detailed info of every vehicle in their garage at any given time.  
 Users can interact with Valet Parking Tracker using RESTful service endpoints, through a UI, or both.
 
+## Startup Notes
+
+After cloning the repo you should be able to run it immediately. This application runs on port 8081.
+
 ## 🎨 Storyboard (screen mockups)
 ![ValetTrackerScreenMockups](https://github.com/user-attachments/assets/e35c5264-a649-43ff-a08b-16d9d8e4c7d2)
 ## ⚙️ Functional Requirements
@@ -68,24 +72,23 @@ Users can interact with Valet Parking Tracker using RESTful service endpoints, t
 
 ```
 {
-    {
-        "vehicleId": "string",
-        "make": "string",
-        "model": "string",
-        "color": "string",
-        "notes": "string"
+    "ticketId": 1,
+    "customer": {
+        "customerId": 123,
+        "firstName": "John",
+        "lastName": "Doe"
     },
-    {
-        "customerId": "string",
-        "firstName": "string",
-        "lastName": "string",
+    "vehicle": {
+        "vehicleId": 456,
+        "make": "Toyota",
+        "model": "Camry",
+        "color": "Red",
+        "notes": "Some minor scratches"
     },
-    {
-        "ticketId": "string",
-        "parkingSpot": "string"
-    }
+    "parkingSpot": "A1"
 }
 ```
+*This is an example of a new ticket being posted*
 
 ## 🧑‍💼 Scrum Roles
 
