@@ -20,8 +20,7 @@ public class TicketServiceStub implements ITicketService {
 
     @Override
     public Ticket fetchById(int id) {
-        Ticket foundTicket = ticketDAO.fetch(id);
-        return foundTicket;
+        return ticketDAO.fetch(id);
     }
 
     @Override

@@ -23,8 +23,7 @@ public class TicketDAOStub implements ITicketDAO {
 
     @Override
     public List<Ticket> fetchAll() {
-        List<Ticket> returnTickets = new ArrayList(allTickets.values());
-        return returnTickets;
+        return new ArrayList<>(allTickets.values());
     }
 
     @Override

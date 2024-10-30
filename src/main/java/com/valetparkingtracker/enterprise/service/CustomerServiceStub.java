@@ -24,8 +24,7 @@ public class CustomerServiceStub implements ICustomerService {
 
     @Override
     public Customer fetchById(int id) {
-        Customer foundCustomer = customerDAO.fetch(id);
-        return foundCustomer;
+        return customerDAO.fetch(id);
     }
 
     @Override

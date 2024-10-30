@@ -24,8 +24,7 @@ public class VehicleServiceStub implements IVehicleService {
 
     @Override
     public Vehicle fetchById(int id) {
-        Vehicle foundVehicle = vehicleDAO.fetch(id);
-        return foundVehicle;
+        return vehicleDAO.fetch(id);
     }
 
     @Override

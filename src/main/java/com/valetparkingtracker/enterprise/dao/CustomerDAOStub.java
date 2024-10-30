@@ -22,8 +22,7 @@ public class CustomerDAOStub implements ICustomerDAO {
 
     @Override
     public List<Customer> fetchAll() {
-        List<Customer> returnCustomers = new ArrayList(allCustomers.values());
-        return returnCustomers;
+        return new ArrayList<>(allCustomers.values());
     }
 
     @Override
