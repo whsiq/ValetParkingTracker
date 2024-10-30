@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -29,6 +31,8 @@ public class ValetParkingTrackerController {
     @Autowired
     ITicketService ticketService;
 
+    private static final Logger logger = LoggerFactory.getLogger(ValetParkingTrackerController.class);
+
     /**
      * Handle the root (/) endpoint and return a start page.
      * @return
@@ -46,7 +50,8 @@ public class ValetParkingTrackerController {
         try {
             ticketService.save(ticket);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            logger.error("An error occurred while saving the ticket with id {}", ticket.getTicketId(), e);
             return index(model);
         }
         return index(model);
@@ -83,6 +88,10 @@ public class ValetParkingTrackerController {
     @RequestMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, Model model) {
         Ticket ticket = ticketService.fetchById(Integer.parseInt(id));
+        if (ticket == null) {
+            logger.error("Ticket with id {} not found", id);
+            return index(model);
+        }
         model.addAttribute(ticket);
         return "edit";
     }
@@ -93,7 +102,7 @@ public class ValetParkingTrackerController {
             ticketService.delete(Integer.parseInt(id));
             return index(model);
         } catch (Exception e) {
-            // TODO: ADD LOGGING
+            logger.error("An error occurred while pulling the vehicle with id {}", id, e);
             return index(model);
         }
     }

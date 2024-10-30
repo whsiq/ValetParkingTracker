@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class CustomerController {
 
     @Autowired
     ICustomerService customerService;
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @GetMapping("/customer")
     @ResponseBody
@@ -38,6 +42,10 @@ public class CustomerController {
     @GetMapping("/customer/{id}/")
     public ResponseEntity fetchCustomerById(@PathVariable("id") String id) {
         Customer foundCustomer = customerService.fetchById(Integer.parseInt(id));
+        if (foundCustomer == null) {
+            logger.error("Customer with id {} not found", id);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity(foundCustomer, headers, HttpStatus.OK);
@@ -61,7 +69,7 @@ public class CustomerController {
         try {
             newCustomer = customerService.save(customer);
         } catch (Exception e) {
-            // TODO Add logging
+            logger.error("An error occurred while saving the customer with id {}", customer.getCustomerId(), e);
         }
         return newCustomer;
     }
@@ -72,6 +80,7 @@ public class CustomerController {
             customerService.delete(Integer.parseInt(id));
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
+            logger.error("An error occurred while deleting the customer with id {}", id, e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

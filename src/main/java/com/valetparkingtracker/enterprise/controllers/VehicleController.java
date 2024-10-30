@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
@@ -24,6 +27,8 @@ public class VehicleController {
 
     @Autowired
     IVehicleService vehicleService;
+    
+    private static final Logger logger = LoggerFactory.getLogger(VehicleController.class);
 
     @GetMapping("/vehicle")
     @ResponseBody
@@ -40,6 +45,10 @@ public class VehicleController {
     @GetMapping("/vehicle/{id}/")
     public ResponseEntity fetchVehicleById(@PathVariable("id") String id) {
         Vehicle foundVehicle = vehicleService.fetchById(Integer.parseInt(id));
+        if (foundVehicle == null) {
+            logger.error("Vehicle with id " + id + " not found");
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity(foundVehicle, headers, HttpStatus.OK);
@@ -63,7 +72,7 @@ public class VehicleController {
         try {
             newVehicle = vehicleService.save(vehicle);
         } catch (Exception e) {
-            // TODO Add logging
+            logger.error("Failed to create vehicle with id {}", vehicle.getVehicleId(), e);
         }
         return newVehicle;
     }
@@ -74,6 +83,7 @@ public class VehicleController {
             vehicleService.delete(Integer.parseInt(id));
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
+            logger.error("Failed to delete vehicle with id {}", id, e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

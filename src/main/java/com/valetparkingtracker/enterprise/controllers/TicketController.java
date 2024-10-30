@@ -16,10 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 public class TicketController {
     @Autowired
     ITicketService ticketService;
+
+    private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
 
     @GetMapping("/ticket")
     @ResponseBody
@@ -36,6 +41,10 @@ public class TicketController {
     @GetMapping("/ticket/{id}/")
     public ResponseEntity fetchTicketById(@PathVariable("id") String id) {
         Ticket foundTicket = ticketService.fetchById(Integer.parseInt(id));
+        if (foundTicket == null) {
+            logger.error("Ticket with id {} not found", id);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity(foundTicket, headers, HttpStatus.OK);
@@ -61,7 +70,7 @@ public class TicketController {
         try {
             newTicket = ticketService.save(ticket);
         } catch (Exception e) {
-            // TODO Add logging
+            logger.error("Failed to create ticket with id {}", ticket.getTicketId());
         }
         return newTicket;
     }
@@ -72,6 +81,7 @@ public class TicketController {
             ticketService.delete(Integer.parseInt(id));
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
+            logger.error("An error occurred while deleting the ticket with id {}", id, e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
