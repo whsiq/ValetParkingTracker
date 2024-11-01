@@ -50,23 +50,13 @@ public class ValetParkingTrackerController {
     public String saveTicket(Model model, Ticket ticket) {
         try {
             ticketService.save(ticket);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return index(model);
-        }
-        try {
             customerService.save(ticket.getCustomer());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return index(model);
-        }
-        try {
             vehicleService.save(ticket.getVehicle());
+            return index(model);
         } catch (Exception e) {
             e.printStackTrace();
-            return index(model);
+            return "error";
         }
-        return index(model);
     }
 
     /**
@@ -110,8 +100,8 @@ public class ValetParkingTrackerController {
             ticketService.delete(Integer.parseInt(id));
             return index(model);
         } catch (Exception e) {
-            // TODO: ADD LOGGING
-            return index(model);
+            e.printStackTrace();
+            return "error";
         }
     }
 }
