@@ -3,6 +3,7 @@ package com.valetparkingtracker.enterprise.controllers;
 import com.valetparkingtracker.enterprise.dto.Customer;
 import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
+import com.valetparkingtracker.enterprise.service.ICustomerService;
 import com.valetparkingtracker.enterprise.service.ITicketService;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class ValetParkingTrackerController {
 
     @Autowired
     ITicketService ticketService;
+    @Autowired
+    IVehicleService vehicleService;
+    @Autowired
+    ICustomerService customerService;
 
     /**
      * Handle the root (/) endpoint and return a start page.
@@ -45,6 +50,18 @@ public class ValetParkingTrackerController {
     public String saveTicket(Model model, Ticket ticket) {
         try {
             ticketService.save(ticket);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return index(model);
+        }
+        try {
+            customerService.save(ticket.getCustomer());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return index(model);
+        }
+        try {
+            vehicleService.save(ticket.getVehicle());
         } catch (Exception e) {
             e.printStackTrace();
             return index(model);
