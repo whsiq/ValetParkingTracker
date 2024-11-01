@@ -3,7 +3,7 @@ package com.valetparkingtracker.enterprise;
 import com.valetparkingtracker.enterprise.dao.IVehicleDAO;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
-import com.valetparkingtracker.enterprise.service.VehicleServiceStub;
+import com.valetparkingtracker.enterprise.service.VehicleService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +35,12 @@ public class VehicleTests {
 
     private void givenVehicleDataIsAvailable() throws Exception {
         Mockito.when(vehicleDAO.save(vehicle)).thenReturn(vehicle);
-        vehicleService = new VehicleServiceStub(vehicleDAO);
+        vehicleService = new VehicleService(vehicleDAO);
     }
 
     private void whenVehicle25AddedIsVolkswagen() {
         Vehicle volkswagen = new Vehicle();
-        volkswagen.setVehicleId("25");
+        volkswagen.setVehicleId(25);
         volkswagen.setMake("Volkswagen");
         Mockito.when(vehicleDAO.fetch(25)).thenReturn(volkswagen);
     }

@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class VehicleServiceStub implements IVehicleService {
+public class VehicleService implements IVehicleService {
 
     @Autowired
     private IVehicleDAO vehicleDAO;
 
-    public VehicleServiceStub() {
+    public VehicleService() {
 
     }
 
-    public VehicleServiceStub(IVehicleDAO vehicleDAO) {
+    public VehicleService(IVehicleDAO vehicleDAO) {
 
         this.vehicleDAO = vehicleDAO;
     }
