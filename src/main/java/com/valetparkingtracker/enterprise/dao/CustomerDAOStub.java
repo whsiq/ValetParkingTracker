@@ -32,6 +32,9 @@ public class CustomerDAOStub implements ICustomerDAO {
     }
 
     @Override
+    public Customer fetchByName(String firstName){ return allCustomers.get(firstName); }
+
+    @Override
     public void delete(int id) {
         allCustomers.remove(id);
     }
