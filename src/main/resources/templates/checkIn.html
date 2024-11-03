@@ -10,8 +10,8 @@
 <body>
   <div th:replace="~{fragments/topnav :: navbar}"></div>
 
-<!--  this form can be changed to POST to put the query in the request body rather than the URL - more secure and looks better - GET is better for debugging -->
-<form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="POST">
+  <!-- This form has been updated to use POST for better security and data handling -->
+  <form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="POST">
 
     <h2 class="mb-4 text-center">Valet Parking Check-In</h2>
 
@@ -22,46 +22,44 @@
             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="ticketId" th:value="*{ticketId}" th:required="required">
         </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="firstName">First Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.firstName" th:value="*{customer.firstName}" th:required="required">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="firstName">First Name</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.firstName" th:value="*{customer.firstName}" th:required="required">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="lastName">Last Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{customer.lastName}" th:required="required">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="lastName">Last Name</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{customer.lastName}" th:required="required">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-<!--        api integration idea - make and model autofill from outside source -->
-        <span class="input-group-text" id="make">Make</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="make">Make</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="model">Model</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.model}" th:required="required">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="model">Model</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.model}" th:required="required">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="color">Color</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.color}" th:required="required">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="color">Color</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.color}" th:required="required">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="parkingSpot">Parking Spot</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{parkingSpot}">
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="parkingSpot">Parking Spot</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{parkingSpot}">
+        </div>
 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="notes">Notes</span>
-        <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="notes" th:field="*{vehicle.notes}"></textarea>
-      </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="notes">Notes</span>
+            <textarea type="text" class="form-control" rows="3" cols="40" maxlength="200" placeholder="Enter up to 150 characters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="notes" th:field="*{vehicle.notes}"></textarea>
+        </div>
 
-      <button name="submit" type="submit" value="0" class="btn btn-primary">Submit</button>
+        <button name="submit" type="submit" value="0" class="btn btn-primary">Submit</button>
     </div>
   </form>
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
