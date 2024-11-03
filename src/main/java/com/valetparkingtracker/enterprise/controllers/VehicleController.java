@@ -1,6 +1,5 @@
 package com.valetparkingtracker.enterprise.controllers;
 
-import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,11 +36,11 @@ public class VehicleController {
      * @return
      */
     @GetMapping("/vehicle/{id}/")
-    public ResponseEntity fetchVehicleById(@PathVariable("id") String id) {
+    public ResponseEntity<?> fetchVehicleById(@PathVariable("id") String id) {
         Vehicle foundVehicle = vehicleService.fetchById(Integer.parseInt(id));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity(foundVehicle, headers, HttpStatus.OK);
+        return new ResponseEntity<>(foundVehicle, headers, HttpStatus.OK);
     }
 
     /**
@@ -69,12 +67,12 @@ public class VehicleController {
     }
 
     @DeleteMapping("/vehicle/{id}/")
-    public ResponseEntity deleteVehicle(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteVehicle(@PathVariable("id") String id) {
         try {
             vehicleService.delete(Integer.parseInt(id));
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

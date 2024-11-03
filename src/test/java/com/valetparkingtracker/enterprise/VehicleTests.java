@@ -40,7 +40,7 @@ public class VehicleTests {
 
     private void whenVehicle25AddedIsVolkswagen() {
         Vehicle volkswagen = new Vehicle();
-        volkswagen.setVehicleId("25");
+        volkswagen.setVehicleId(Integer.parseInt("25"));
         volkswagen.setMake("Volkswagen");
         Mockito.when(vehicleDAO.fetch(25)).thenReturn(volkswagen);
     }
