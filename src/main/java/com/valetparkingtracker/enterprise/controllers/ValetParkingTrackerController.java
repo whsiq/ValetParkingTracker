@@ -1,18 +1,19 @@
 package com.valetparkingtracker.enterprise.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.valetparkingtracker.enterprise.dto.Customer;
 import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.ITicketService;
-import com.valetparkingtracker.enterprise.service.IVehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * The controller for Valet Parking Tracker REST endpoints and web UI
@@ -33,15 +34,14 @@ public class ValetParkingTrackerController {
      * Handle the root (/) endpoint and return a start page.
      * @return
      */
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index(Model model) {
         List<Ticket> tickets = ticketService.fetchAll();
         model.addAttribute("tickets", tickets);
-
         return "start";
     }
 
-    @RequestMapping("/saveTicket")
+    @PostMapping("/saveTicket")
     public String saveTicket(Model model, Ticket ticket) {
         try {
             ticketService.save(ticket);
@@ -60,7 +60,7 @@ public class ValetParkingTrackerController {
      *
      * @return the newVehicle html page
      */
-    @RequestMapping("/checkIn")
+    @GetMapping("/checkIn")
     public String checkIn(Model model) {
         Ticket ticket = new Ticket();
         Customer customer = new Customer();
@@ -80,7 +80,7 @@ public class ValetParkingTrackerController {
      *
      * @return the newVehicle html page
      */
-    @RequestMapping("/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, Model model) {
         Ticket ticket = ticketService.fetchById(Integer.parseInt(id));
         model.addAttribute(ticket);
