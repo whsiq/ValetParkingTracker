@@ -36,11 +36,11 @@ public class VehicleController {
      * @return
      */
     @GetMapping("/vehicle/{id}/")
-    public ResponseEntity fetchVehicleById(@PathVariable("id") String id) {
+    public ResponseEntity<?> fetchVehicleById(@PathVariable("id") String id) {
         Vehicle foundVehicle = vehicleService.fetchById(Integer.parseInt(id));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity(foundVehicle, headers, HttpStatus.OK);
+        return new ResponseEntity<>(foundVehicle, headers, HttpStatus.OK);
     }
 
     /**
@@ -69,12 +69,12 @@ public class VehicleController {
     }
 
     @DeleteMapping("/vehicle/{id}/")
-    public ResponseEntity deleteVehicle(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteVehicle(@PathVariable("id") String id) {
         try {
             vehicleService.delete(Integer.parseInt(id));
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

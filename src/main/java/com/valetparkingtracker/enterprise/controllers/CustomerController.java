@@ -36,11 +36,11 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/customer/{id}/")
-    public ResponseEntity fetchCustomerById(@PathVariable("id") String id) {
+    public ResponseEntity<?> fetchCustomerById(@PathVariable("id") String id) {
         Customer foundCustomer = customerService.fetchById(Integer.parseInt(id));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity(foundCustomer, headers, HttpStatus.OK);
+        return new ResponseEntity<>(foundCustomer, headers, HttpStatus.OK);
     }
 
     /**
@@ -67,12 +67,12 @@ public class CustomerController {
     }
 
     @DeleteMapping("/customer/{id}/")
-    public ResponseEntity deleteCustomer(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteCustomer(@PathVariable("id") String id) {
         try {
             customerService.delete(Integer.parseInt(id));
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

@@ -1,12 +1,7 @@
 package com.valetparkingtracker.enterprise.controllers;
 
-import com.valetparkingtracker.enterprise.dto.Customer;
 import com.valetparkingtracker.enterprise.dto.Ticket;
-import com.valetparkingtracker.enterprise.dto.Vehicle;
-import com.valetparkingtracker.enterprise.service.ICustomerService;
 import com.valetparkingtracker.enterprise.service.ITicketService;
-import com.valetparkingtracker.enterprise.service.IVehicleService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -34,11 +30,11 @@ public class TicketController {
      * @return
      */
     @GetMapping("/ticket/{id}/")
-    public ResponseEntity fetchTicketById(@PathVariable("id") String id) {
+    public ResponseEntity<?> fetchTicketById(@PathVariable("id") String id) {
         Ticket foundTicket = ticketService.fetchById(Integer.parseInt(id));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity(foundTicket, headers, HttpStatus.OK);
+        return new ResponseEntity<>(foundTicket, headers, HttpStatus.OK);
     }
 
     /**
@@ -67,12 +63,12 @@ public class TicketController {
     }
 
     @DeleteMapping("/ticket/{id}/")
-    public ResponseEntity deleteVehicle(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteVehicle(@PathVariable("id") String id) {
         try {
             ticketService.delete(Integer.parseInt(id));
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

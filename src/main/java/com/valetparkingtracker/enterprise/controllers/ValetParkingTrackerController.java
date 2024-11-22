@@ -5,13 +5,11 @@ import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.ICustomerService;
 import com.valetparkingtracker.enterprise.service.ITicketService;
-import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
