@@ -47,7 +47,7 @@ public class VehicleController {
      * Creates a new Vehicle object given provided data
      * For some reason this works in debug mode when slowly moving through to the DAO,
      * but when a post is sent in normal runtime I'm getting a thymeleaf TemplateInputException
-     *
+     * <p>
      * Returns one of the following status codes:
      * 201: successfully created a new vehicle
      * 409: unable to create vehicle because it already exists
@@ -56,14 +56,16 @@ public class VehicleController {
      * @return the newly created vehicle object
      */
     @PostMapping(value="/vehicle", consumes="application/json", produces="application/json")
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
+    public ResponseEntity createVehicle(@RequestBody Vehicle vehicle) {
         Vehicle newVehicle = null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
         try {
             newVehicle = vehicleService.save(vehicle);
         } catch (Exception e) {
-            // TODO Add logging
+            return new ResponseEntity(newVehicle, headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return newVehicle;
+        return new ResponseEntity(newVehicle, headers, HttpStatus.OK);
     }
 
     @DeleteMapping("/vehicle/{id}/")
