@@ -9,6 +9,8 @@ public interface ICustomerDAO {
 
     List<Customer> fetchAll();
 
+    Customer fetchByName(String firstName);
+
     Customer fetch(int id);
 
     void delete(int id);

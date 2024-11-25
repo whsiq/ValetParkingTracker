@@ -42,4 +42,10 @@ public class CustomerServiceStub implements ICustomerService {
     public List<Customer> fetchAll() {
         return customerDAO.fetchAll();
     }
+
+    public Customer fetchByName(String firstName)
+    {
+        Customer foundCustomer = customerDAO.fetchByName(firstName);
+        return foundCustomer;
+    }
 }
