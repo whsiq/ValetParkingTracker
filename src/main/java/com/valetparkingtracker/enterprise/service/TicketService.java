@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TicketServiceStub implements ITicketService {
+public class TicketService implements ITicketService {
     @Autowired
     private ITicketDAO ticketDAO;
 
-    public TicketServiceStub() {
+    public TicketService() {
     }
 
-    public TicketServiceStub(ITicketDAO TicketDAO) {
+    public TicketService(ITicketDAO TicketDAO) {
         this.ticketDAO = TicketDAO;
     }
 
