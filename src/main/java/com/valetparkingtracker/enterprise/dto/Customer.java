@@ -10,7 +10,7 @@ import lombok.Data;
 public @Data
 class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int customerId;
     private String firstName;
     private String lastName;

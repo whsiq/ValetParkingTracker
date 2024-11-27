@@ -48,9 +48,9 @@ public class ValetParkingTrackerController {
     @RequestMapping("/saveTicket")
     public String saveTicket(Model model, Ticket ticket) {
         try {
-            ticketService.save(ticket);
             customerService.save(ticket.getCustomer());
             vehicleService.save(ticket.getVehicle());
+            ticketService.save(ticket);
             return index(model);
         } catch (Exception e) {
             e.printStackTrace();
