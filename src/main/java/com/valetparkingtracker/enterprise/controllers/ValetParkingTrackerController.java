@@ -33,13 +33,15 @@ public class ValetParkingTrackerController {
     @Autowired
     ICustomerService customerService;
 
+    List<Ticket> tickets;
+
     /**
      * Handle the root (/) endpoint and return a start page.
      * @return
      */
     @RequestMapping("/")
     public String index(Model model) {
-        List<Ticket> tickets = ticketService.fetchAll();
+        tickets = ticketService.fetchAll();
         model.addAttribute("tickets", tickets);
 
         return "start";
@@ -57,6 +59,7 @@ public class ValetParkingTrackerController {
             return "error";
         }
     }
+
 
     /**
      * <p>UI Mapping</p>

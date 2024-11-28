@@ -39,7 +39,6 @@ public class TicketService implements ITicketService {
     }
 
     @Override
-    @Cacheable("tickets")
     public List<Ticket> fetchAll() {
         return ticketDAO.fetchAll();
     }
