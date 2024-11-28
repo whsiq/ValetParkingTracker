@@ -5,6 +5,7 @@ import com.valetparkingtracker.enterprise.dto.Ticket;
 import com.valetparkingtracker.enterprise.dto.Vehicle;
 import com.valetparkingtracker.enterprise.service.ICustomerService;
 import com.valetparkingtracker.enterprise.service.ITicketService;
+import com.valetparkingtracker.enterprise.service.IVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +33,15 @@ public class ValetParkingTrackerController {
     @Autowired
     ICustomerService customerService;
 
+    List<Ticket> tickets;
+
     /**
      * Handle the root (/) endpoint and return a start page.
      * @return
      */
     @RequestMapping("/")
     public String index(Model model) {
-        List<Ticket> tickets = ticketService.fetchAll();
+        tickets = ticketService.fetchAll();
         model.addAttribute("tickets", tickets);
 
         return "start";
@@ -47,15 +50,16 @@ public class ValetParkingTrackerController {
     @RequestMapping("/saveTicket")
     public String saveTicket(Model model, Ticket ticket) {
         try {
-            ticketService.save(ticket);
             customerService.save(ticket.getCustomer());
             vehicleService.save(ticket.getVehicle());
+            ticketService.save(ticket);
             return index(model);
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
         }
     }
+
 
     /**
      * <p>UI Mapping</p>
