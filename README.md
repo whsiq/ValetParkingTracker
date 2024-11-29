@@ -72,20 +72,59 @@ After cloning the repo you should be able to run it immediately. This applicatio
 
 ```
 {
-    "ticketId": 1,
-    "customer": {
-        "customerId": 123,
-        "firstName": "John",
-        "lastName": "Doe"
-    },
-    "vehicle": {
-        "vehicleId": 456,
-        "make": "Toyota",
-        "model": "Camry",
-        "color": "Red",
-        "notes": "Some minor scratches"
-    },
-    "parkingSpot": "A1"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ticket": {
+      "type": "object",
+      "properties": {
+        "ticketId": {
+          "type": "integer"
+        },
+        "customer": {
+          "type": "object",
+          "properties": {
+            "customerId": {
+              "type": "integer"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            }
+          },
+          "required": ["customerId", "firstName", "lastName"]
+        },
+        "vehicle": {
+          "type": "object",
+          "properties": {
+            "vehicleId": {
+              "type": "integer"
+            },
+            "make": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "required": ["vehicleId", "make", "model", "color"]
+        },
+        "parkingSpot": {
+          "type": "string"
+        }
+      },
+      "required": ["ticketId", "customer", "vehicle", "parkingSpot"]
+    }
+  },
+  "required": ["ticket"]
 }
 ```
 *This is an example of a new ticket being posted*
