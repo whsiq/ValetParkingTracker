@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class ValetParkingTrackerController {
 
     /**
      * Handle the root (/) endpoint and return a start page.
+     *
      * @return
      */
     @RequestMapping("/")
@@ -63,7 +66,7 @@ public class ValetParkingTrackerController {
 
     /**
      * <p>UI Mapping</p>
-     *
+     * <p>
      * Displays the form to check in a guest
      * Should create a new vehicle, customer, and ticket using provided info
      *
@@ -83,7 +86,7 @@ public class ValetParkingTrackerController {
 
     /**
      * <p>UI Mapping</p>
-     *
+     * <p>
      * Displays the form to check in a guest
      * Should create a new vehicle, customer, and ticket using provided info
      *
@@ -96,6 +99,8 @@ public class ValetParkingTrackerController {
         return "edit";
     }
 
+
+
     @RequestMapping("/pullVehicle/{id}")
     public String pullVehicle(@PathVariable("id") String id, Model model) {
         try {
@@ -106,4 +111,32 @@ public class ValetParkingTrackerController {
             return "error";
         }
     }
+
+    /**
+     * <p>Request Vehicle Page</p>
+     * <p>
+     * Displays a form for a guest to request their vehicle
+     * Should pull an already listed vehicle using its ticket number
+     *
+     * @return the home page
+     */
+
+
+    @RequestMapping("/requestVehicle")
+    public String requestVehicle(Model model) {
+        return "requestVehicle";
+    }
+
+    @RequestMapping(value = "/pullRequestedVehicle", method = RequestMethod.POST)
+    public String pullRequestedVehicle(@RequestParam("ticketId") String ticketId, Model model) {
+        try {
+            ticketService.delete(Integer.parseInt(ticketId));
+            return index(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 }
+
+
