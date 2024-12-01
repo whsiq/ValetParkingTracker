@@ -10,11 +10,27 @@
 </head>
 <body>
 
-<!--  this form can be changed to POST to put the query in the request body rather than the URL - more secure and looks better - GET is better for debugging -->
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Valet Parking Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+</div>
+
+
 <form action="#" th:action="@{/pullRequestedVehicle}" method="POST">
     <h2 class="mb-4 text-center">Valet Parking Vehicle Request</h2>
 
-    <div class="container mt-1">
+    <div class="container mt-1"
+         style="padding-left: 500px;
+                padding-right: 500px;
+                text-align: center;">
 
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="ticketId">Ticket Number</span>
@@ -27,7 +43,6 @@
 
     </div>
 </form>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
