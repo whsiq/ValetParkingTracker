@@ -12,53 +12,53 @@
 
   <form action="#" th:action="@{/saveTicket}" th:object="${ticket}" method="POST">
 
-    <h2 class="mb-4 text-center">Valet Parking Edit Tracker</h2>
+    <h2 class="mb-4 text-center">Valet Parking Edit Ticket</h2>
 
     <div class="container mt-1">
 
       <div style="display: none">
         <span class="input-group-text" id="ticketId">Ticket ID</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="ticketId" th:value="*{ticketId}">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="ticketId" th:value="*{ticketId}" autocomplete="off">
       </div>
 
       <div style="display: none">
         <span class="input-group-text" id="customerId">Customer ID</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.customerId" th:value="*{customer.customerId}">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.customerId" th:value="*{customer.customerId}" autocomplete="off">
       </div>
 
       <div style="display: none">
         <span class="input-group-text" id="vehicleId">Vehicle ID</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="vehicle.vehicleId" th:value="*{vehicle.vehicleId}">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="vehicle.vehicleId" th:value="*{vehicle.vehicleId}" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="firstName">First Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.firstName" th:value="*{customer.firstName}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="customer.firstName" th:value="*{customer.firstName}" th:required="required" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="lastName">Last Name</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{customer.lastName}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{customer.lastName}" th:required="required" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="make">Make</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.make}" th:required="required" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="model">Model</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.model}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.model}" th:required="required" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="color">Color</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.color}" th:required="required">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{vehicle.color}" th:required="required" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="parkingSpot">Parking Spot</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{parkingSpot}">
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" th:field="*{parkingSpot}" autocomplete="off">
       </div>
 
       <div class="input-group input-group-sm mb-3">
