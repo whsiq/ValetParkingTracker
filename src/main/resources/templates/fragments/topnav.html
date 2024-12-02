@@ -1,3 +1,5 @@
+
+
 <div th:fragment="navbar">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -14,11 +16,24 @@
             <a class="nav-link" href="/checkIn">Check In</a>
           </li>
         </ul>
-        <form class="d-flex" role="search" action="#" th:action="@{/vehicle}" method="GET">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" id="searchTerm">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="button" id="searchBtn">Search</button>
         </form>
       </div>
     </div>
   </nav>
+
+  <!-- Search function for the tables -->
+  <script>
+    $(document).ready(function(){
+      $("#searchBtn").click( function() {
+        var value = $("#searchTerm").val().toLowerCase();
+        $("tbody tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
 </div>
